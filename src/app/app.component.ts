@@ -40,19 +40,22 @@ export class AppComponent {
     this.mqSecar = event;
   }
 
+  parteCalc(potencia: number, horasdia: number, diasmes: number): number {
+    let soma = ((potencia * horasdia) / 1000) * this.tarifa * diasmes;
+
+    return soma;
+  }
+
   calcular() {
-    let soma =0;
-    soma+=
-      ((5000 * 0.16666) / 1000) * this.tarifa * 30 * this.nPessoas;
-    if (this.mqLavar) soma += ((1500 * 1) / 1000) * this.tarifa * 16; //analisar o número de horas
-    if (this.mqSecar) soma += ((3500 * 1) / 1000) * this.tarifa * 12;
-    soma += ((200 * 5) / 1000) * this.tarifa * 30 * this.nTv;
-    soma +=
-      ((350 * 5) / 1000) * this.tarifa * 30 * this.nComputador; //analisar o número de horas
-    soma += ((15 * 10) / 1000) * this.tarifa * 30 * this.nComodos; //analisar o número de horas
+    this.totalPagar = 0;
 
-    this.totalPagar = soma;
+    this.totalPagar += this.parteCalc(5000, 0.16666, 30) * this.nPessoas;
+    if (this.mqLavar) this.totalPagar += this.parteCalc(1500, 1, 16);
+    if (this.mqSecar) this.totalPagar += this.parteCalc(3500, 1, 4);
+    this.totalPagar += this.parteCalc(200, 5, 30) * this.nTv;
+    this.totalPagar += this.parteCalc(350, 5, 30) * this.nComputador;
+    this.totalPagar += this.parteCalc(15, 10, 30) * this.nComodos;
+
     this.visibility = true;
-
   }
 }
