@@ -7,13 +7,15 @@ import { InputComponent } from './input/input.component';
 import { ButtonComponent } from './button/button.component';
 import { FormsModule } from '@angular/forms';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { ShowanswerComponent } from './showanswer/showanswer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
     ButtonComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    ShowanswerComponent
   ],
   imports: [
     BrowserModule,

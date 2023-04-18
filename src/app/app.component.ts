@@ -15,6 +15,8 @@ export class AppComponent {
   tarifa: number = 0;
   mqLavar: boolean = false;
   mqSecar: boolean = false;
+  totalPagar: number = 0;
+  visibility: boolean = false;
 
   getNPessoas(event: any) {
     this.nPessoas = Number(event);
@@ -39,15 +41,18 @@ export class AppComponent {
   }
 
   calcular() {
-    let gastoBanho =
+    let soma =0;
+    soma+=
       ((5000 * 0.16666) / 1000) * this.tarifa * 30 * this.nPessoas;
-    let gastoMqLavar = 0;
-    if (this.mqLavar) gastoMqLavar = ((1500 * 1) / 1000) * this.tarifa * 16; //analisar o número de horas
-    let gastoMqSecar = 0;
-    if (this.mqSecar) gastoMqSecar = ((3500 * 1) / 1000) * this.tarifa * 12;
-    let gastoTv = ((200 * 5) / 1000) * this.tarifa * 30 * this.nTv;
-    let gastoComputador =
+    if (this.mqLavar) soma += ((1500 * 1) / 1000) * this.tarifa * 16; //analisar o número de horas
+    if (this.mqSecar) soma += ((3500 * 1) / 1000) * this.tarifa * 12;
+    soma += ((200 * 5) / 1000) * this.tarifa * 30 * this.nTv;
+    soma +=
       ((350 * 5) / 1000) * this.tarifa * 30 * this.nComputador; //analisar o número de horas
-    let gastoLampada = ((15 * 10) / 1000) * this.tarifa * 30 * this.nComodos; //analisar o número de horas
+    soma += ((15 * 10) / 1000) * this.tarifa * 30 * this.nComodos; //analisar o número de horas
+
+    this.totalPagar = soma;
+    this.visibility = true;
+
   }
 }

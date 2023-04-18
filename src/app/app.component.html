@@ -39,6 +39,8 @@
       ></app-input>
 
       <app-button [holder]="'Calcular'" (click)="calcular()"></app-button>
+      <app-showanswer *ngIf="visibility" [answer] = "totalPagar.toFixed(2)"></app-showanswer>
+
     </div>
   </div>
 </div>
