@@ -2,14 +2,43 @@
   <div class="d-flex justify-content-center">
     <div class="d-flex flex-column mb-3">
       <h1>Conversor de moedas</h1>
-      <app-input [holder] = "'Quantidade de Pessoas'" (sendValue)="getN1($event)"></app-input>
-      <app-input [holder] = "'Número de comodos'"></app-input>
-      <app-checkbox [holder] = "'Máquina de Lavar'"></app-checkbox>
-      <app-checkbox [holder] = "'Máquina de Secar Roupas'"></app-checkbox>
-      <app-input [holder] = "'Quantidade de TVs'"></app-input>
-      <app-input [holder] = "'Quantidade de Computadores'"></app-input>
-      <app-input [holder] = "'Tarifa Energética'"></app-input>
-      <app-button [holder] = "'Calcular'"></app-button>
+
+      <app-input
+        [holder]="'Quantidade de Pessoas'"
+        (sendValue)="getNPessoas($event)"
+      ></app-input>
+
+      <app-input
+        [holder]="'Número de comodos'"
+        (sendValue)="getNComodos($event)"
+      ></app-input>
+
+      <app-checkbox
+        [holder]="'Máquina de Lavar'"
+        (sendValue)="getMqLavar($event)"
+      ></app-checkbox>
+
+      <app-checkbox
+        [holder]="'Máquina de Secar Roupas'"
+        (sendValue)="getMqSecar($event)"
+      ></app-checkbox>
+
+      <app-input
+        [holder]="'Quantidade de TVs'"
+        (sendValue)="getNTv($event)"
+      ></app-input>
+
+      <app-input
+        [holder]="'Quantidade de Computadores'"
+        (sendValue)="getNComputador($event)"
+      ></app-input>
+
+      <app-input
+        [holder]="'Tarifa Energética'"
+        (sendValue)="getTarifa($event)"
+      ></app-input>
+
+      <app-button [holder]="'Calcular'" (click)="calcular()"></app-button>
     </div>
   </div>
 </div>
