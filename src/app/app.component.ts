@@ -15,6 +15,7 @@ export class AppComponent {
   tarifa: number = 0;
   mqLavar: boolean = false;
   mqSecar: boolean = false;
+  totalConsumo: number = 0;
   totalPagar: number = 0;
   visibility: boolean = false;
 
@@ -40,21 +41,23 @@ export class AppComponent {
     this.mqSecar = event;
   }
 
-  parteCalc(potencia: number, horasdia: number, diasmes: number): number {
-    let soma = ((potencia * horasdia) / 1000) * this.tarifa * diasmes;
+  consumo(potencia: number, horasdia: number, diasmes: number): number {
+    let soma = ((potencia * horasdia) / 1000) * diasmes;
 
     return soma;
   }
 
   calcular() {
-    this.totalPagar = 0;
+    this.totalConsumo = 0;
 
-    this.totalPagar += this.parteCalc(5000, 0.16666, 30) * this.nPessoas;
-    if (this.mqLavar) this.totalPagar += this.parteCalc(1500, 1, 16);
-    if (this.mqSecar) this.totalPagar += this.parteCalc(3500, 1, 4);
-    this.totalPagar += this.parteCalc(200, 5, 30) * this.nTv;
-    this.totalPagar += this.parteCalc(350, 5, 30) * this.nComputador;
-    this.totalPagar += this.parteCalc(15, 10, 30) * this.nComodos;
+    this.totalConsumo += this.consumo(5000, 0.16666, 30) * this.nPessoas;
+    if (this.mqLavar) this.totalConsumo += this.consumo(1500, 1, 16);
+    if (this.mqSecar) this.totalConsumo += this.consumo(3500, 1, 4);
+    this.totalConsumo += this.consumo(200, 5, 30) * this.nTv;
+    this.totalConsumo += this.consumo(350, 5, 30) * this.nComputador;
+    this.totalConsumo += this.consumo(15, 10, 30) * this.nComodos;
+
+    this.totalPagar = this.totalConsumo * this.tarifa;
 
     this.visibility = true;
   }

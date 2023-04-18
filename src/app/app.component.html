@@ -39,8 +39,14 @@
       ></app-input>
 
       <app-button [holder]="'Calcular'" (click)="calcular()"></app-button>
-      <app-showanswer *ngIf="visibility" [answer] = "totalPagar.toFixed(2)"></app-showanswer>
-
+      <app-showanswer
+        *ngIf="visibility"
+        [answer]="'Consumo ' + totalConsumo.toFixed(2).replace('.', ',') + 'Kw'"
+      ></app-showanswer>
+      <app-showanswer
+        *ngIf="visibility"
+        [answer]="'R$ ' + totalPagar.toFixed(2).replace('.', ',')"
+      ></app-showanswer>
     </div>
   </div>
 </div>
